@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lakehouse Tools | Your warehouse is your data platform</title>
+  <meta name="description" content="lht is an open-source Python library and CLI that syncs Salesforce into Snowflake, pushes data back with reverse ETL, and merges duplicate records, on your own infrastructure. Bring Your Own Data Warehouse.">
+  <link rel="canonical" href="https://lakehousetools.com/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lakehouse Tools">
+  <meta property="og:title" content="Your warehouse is your data platform.">
+  <meta property="og:description" content="Salesforce is a view into it. lht keeps them in sync, in both directions: open-source sync, reverse ETL and record merge. Bring Your Own Data Warehouse.">
+  <meta property="og:url" content="https://lakehousetools.com/">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "lht",
+    "alternateName": "Lakehouse Tools",
+    "description": "Open-source Python library and CLI for syncing Salesforce into Snowflake with the Bulk API 2.0, reverse ETL from Snowflake to Salesforce, and merging duplicate Salesforce records.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, macOS, Windows",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "url": "https://lakehousetools.com/",
+    "downloadUrl": "https://pypi.org/project/lht/",
+    "codeRepository": "https://github.com/lakehousetools/lht",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Lakehouse Tools", "url": "https://lakehousetools.com/" }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="Lakehouse Tools home">
+        <svg class="logo" viewBox="0 0 270 52" role="img" aria-hidden="true">
+          <path class="roof" d="M6 24 L24 8 L42 24" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path class="wave" d="M4 34 Q 11 29 18 34 T 32 34 T 46 34" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <path class="wave" d="M4 43 Q 11 38 18 43 T 32 43 T 46 43" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <text x="58" y="34"><tspan class="name">Lakehouse</tspan><tspan class="name2" dx="8">Tools</tspan></text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#what">What lht does</a>
+        <a href="https://lakehousetools.github.io/lht/">Docs</a>
+        <a href="https://github.com/lakehousetools/lht/discussions">Community</a>
+        <a class="btn btn-ghost" href="https://github.com/lakehousetools/lht">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">lht · open source · Apache 2.0</p>
+        <h1>Your warehouse is your <span class="accent-text">data platform.</span></h1>
+        <p class="lede">Salesforce is a view into it. lht keeps them in sync, in both directions, on infrastructure you already own. <strong>Bring Your Own Data Warehouse.</strong></p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#start">Get started</a>
+          <a class="btn btn-secondary" href="https://github.com/lakehousetools/lht">View on GitHub</a>
+        </div>
+        <div class="install" aria-label="Install command">
+          <code><span class="prompt">$</span> pip install lht</code>
+          <button class="copy" type="button" data-copy="pip install lht" aria-label="Copy install command">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="wrap narrow">
+        <h2>Salesforce data needs a home</h2>
+        <p>Anyone who has spent meaningful time with Salesforce knows the challenges with data. We built lht to close that gap.</p>
+        <p>Our clients don't want to go all-in on the Salesforce ecosystem just to make Salesforce fit, and many can't afford to. They don't want Data Cloud's consumption pricing and the surprise bills that can come with it, or MuleSoft, which is complex to deploy and needs a dedicated team to run.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="approach">
+      <div class="wrap narrow">
+        <h2>Use the warehouse you already own</h2>
+        <p>Using the warehouse they already own, my team and I have delivered truly disruptive capabilities for our customers at a fraction of the cost of the conventional tools.</p>
+        <ul class="points">
+          <li><strong>Open source.</strong> Read it, run it, fork it. Apache 2.0.</li>
+          <li><strong>Runs on your infrastructure.</strong> Your credentials, your schedule. Your data never passes through us.</li>
+          <li><strong>Built on the Salesforce Bulk API 2.0.</strong> Large objects move without burning through your API limits.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="what">
+      <div class="wrap">
+        <h2 class="center">What lht does</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">→</div>
+            <h3>Sync</h3>
+            <p class="card-sub">Salesforce → Snowflake</p>
+            <p>Full load on the first run, then incremental merges on <code>LastModifiedDate</code>. Tables and types are created for you.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">←</div>
+            <h3>Reverse ETL</h3>
+            <p class="card-sub">Snowflake → Salesforce</p>
+            <p>Upsert, insert, update or delete Salesforce records from any Snowflake <code>SELECT</code>: scores, enrichment, cleanup.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⇄</div>
+            <h3>Merge</h3>
+            <p class="card-sub">Dedupe inside Salesforce</p>
+            <p>Find duplicates with SQL, then merge Accounts, Contacts or Leads in Salesforce, with a dry run first.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="start">
+      <div class="wrap narrow">
+        <h2>Get started in minutes</h2>
+        <p>lht needs Python 3.9 or newer, a Salesforce app with OAuth, and a Snowflake user with a key pair.</p>
+        <pre class="code" aria-label="Quickstart commands"><code><span class="c"># install</span>
+pip install lht
+
+<span class="c"># save your connections (prompts for each value)</span>
+lht create-connection --snowflake
+lht create-connection --salesforce
+
+<span class="c"># sync an object; run it again to load only what changed</span>
+lht sync --sobject Account --table ACCOUNT --schema RAW</code></pre>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://lakehousetools.github.io/lht/getting-started/">Read the getting-started guide</a>
+          <a class="btn btn-secondary" href="https://pypi.org/project/lht/">lht on PyPI</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="next">
+      <div class="wrap narrow">
+        <h2>Coming next: visualization and AI</h2>
+        <p>lht also opens the door to powerful data visualization and AI on your Salesforce data. We'll publish examples of how the Lakehouse Tools team does this in the coming months.</p>
+        <p class="muted">To hear when they're out, watch the <a href="https://github.com/lakehousetools/lht">GitHub repo</a> or follow <a href="https://github.com/lakehousetools/lht/discussions/categories/announcements">Announcements</a>.</p>
+      </div>
+    </section>
+
+    <section class="section join" id="join">
+      <div class="wrap narrow center">
+        <h2>Try lht</h2>
+        <p>Download it, tell us what you think, and contribute code if you can. We'd love to hear your success stories.</p>
+        <div class="join-grid">
+          <a class="join-link" href="https://github.com/lakehousetools/lht/discussions/categories/q-a"><strong>Ask a question</strong><span>Discussions Q&amp;A</span></a>
+          <a class="join-link" href="https://github.com/lakehousetools/lht/discussions/categories/ideas"><strong>Suggest an idea</strong><span>Discussions Ideas</span></a>
+          <a class="join-link" href="https://github.com/lakehousetools/lht/discussions/categories/show-and-tell"><strong>Share your story</strong><span>Show and tell</span></a>
+          <a class="join-link" href="https://github.com/lakehousetools/lht/blob/main/CONTRIBUTING.md"><strong>Contribute code</strong><span>Contributing guide</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <p>© <span id="year">2026</span> Lakehouse Tools. lht is open source under the Apache 2.0 license.</p>
+      <nav aria-label="Footer">
+        <a href="https://lakehousetools.github.io/lht/">Docs</a>
+        <a href="https://github.com/lakehousetools/lht">GitHub</a>
+        <a href="https://pypi.org/project/lht/">PyPI</a>
+        <a href="https://github.com/lakehousetools/lht/blob/main/SECURITY.md">Security</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('button.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-copy');
+        var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+        if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
+      });
+    });
+  </script>
+</body>
+</html>

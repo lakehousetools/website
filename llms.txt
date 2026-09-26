@@ -1,0 +1,14 @@
+# Lakehouse Tools
+
+> Lakehouse Tools builds open-source, warehouse-native tools for Salesforce data. Its first product, lht, is a Python library and CLI that syncs Salesforce into Snowflake (full + incremental via the Salesforce Bulk API 2.0), pushes Snowflake query results back into Salesforce (reverse ETL), and merges duplicate Salesforce records. It runs on the user's own infrastructure. Tagline: "Bring Your Own Data Warehouse". Install with `pip install lht`. License: Apache 2.0.
+
+## lht
+
+- [lht on GitHub](https://github.com/lakehousetools/lht): source, README, examples
+- [Documentation](https://lakehousetools.github.io/lht/): getting started, authentication, CLI reference, Python API
+- [lht llms.txt](https://lakehousetools.github.io/lht/llms.txt): detailed machine-readable docs index
+- [PyPI](https://pypi.org/project/lht/)
+
+## Community
+
+- [Discussions](https://github.com/lakehousetools/lht/discussions): questions, ideas, success stories

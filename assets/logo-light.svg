@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 52" role="img" aria-label="Lakehouse Tools">
+  <path d="M6 24 L24 8 L42 24" fill="none" stroke="#04342C" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M4 34 Q 11 29 18 34 T 32 34 T 46 34" fill="none" stroke="#1D9E75" stroke-width="3" stroke-linecap="round"/>
+  <path d="M4 43 Q 11 38 18 43 T 32 43 T 46 43" fill="none" stroke="#1D9E75" stroke-width="3" stroke-linecap="round"/>
+  <text x="58" y="34" font-family="Inter, system-ui, sans-serif" font-size="26" letter-spacing="-0.3"><tspan font-weight="600" fill="#04342C">Lakehouse</tspan><tspan dx="8" font-weight="400" fill="#0F6E56">Tools</tspan></text>
+</svg>

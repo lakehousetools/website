@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <style>.r{stroke:#04342C}.w{stroke:#1D9E75}@media (prefers-color-scheme:dark){.r{stroke:#E1F5EE}.w{stroke:#5DCAA5}}</style>
+  <path class="r" d="M6 22 L24 6 L42 22" fill="none" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path class="w" d="M4 32 Q 11 27 18 32 T 32 32 T 46 32" fill="none" stroke-width="4" stroke-linecap="round"/>
+  <path class="w" d="M4 41 Q 11 36 18 41 T 32 41 T 46 41" fill="none" stroke-width="4" stroke-linecap="round"/>
+</svg>
