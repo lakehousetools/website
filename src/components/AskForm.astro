@@ -1,0 +1,98 @@
+---
+import { FORM_ENDPOINT } from '../site.config';
+
+interface Props {
+  /** Where the form sits, recorded with each submission so you know which page brought the lead in. */
+  source: string;
+  heading?: string;
+  intro?: string;
+  compact?: boolean;
+}
+const {
+  source,
+  heading = 'Help me understand this',
+  intro = "Have a question about a pattern here, or how it would work with your Salesforce data? Ask, and I'll reply personally.",
+  compact = false,
+} = Astro.props;
+const id = `ask-${Math.random().toString(36).slice(2, 8)}`;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+---
+<section class:list={['ask', { compact }]} aria-labelledby={`${id}-h`}>
+  <h2 id={`${id}-h`}>{heading}</h2>
+  <p class="ask-intro">{intro}</p>
+  <form class="ask-form" action={FORM_ENDPOINT} method="POST" data-ask-form>
+    <input type="hidden" name="_redirect" value="1">
+    <input type="hidden" name="source" value={source}>
+    <input type="hidden" name="page" value={pageUrl}>
+    <input type="text" name="_gotcha" class="ask-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <label class="ask-full">
+      <span>Your question</span>
+      <textarea name="question" rows="4" required maxlength="4000" placeholder="How would this work if our source data lives in Databricks?"></textarea>
+    </label>
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>
+      <span>Work email</span>
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label class="ask-full">
+      <span>Company <em>(optional)</em></span>
+      <input type="text" name="company" autocomplete="organization">
+    </label>
+    <label class="ask-check ask-full">
+      <input type="checkbox" name="subscribe" value="yes">
+      <span>Keep me posted on new posts and lht releases</span>
+    </label>
+    <div class="ask-actions ask-full">
+      <button type="submit" class="btn btn-primary">Send question</button>
+      <p class="ask-note">We'll only use your details to reply and, if you tick the box, to send updates. See our <a href="/privacy/">privacy notice</a>.</p>
+    </div>
+    <p class="ask-status ask-full" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  // Submit in place so the reader stays on the page. Without JavaScript the
+  // form posts normally (with _redirect) and the handler shows a thank-you page.
+  document.querySelectorAll<HTMLFormElement>('form[data-ask-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const status = form.querySelector<HTMLElement>('.ask-status')!;
+      const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>);
+      body.delete('_redirect');
+      button.disabled = true;
+      status.textContent = 'Sending…';
+      status.className = 'ask-status ask-full';
+      const done = () => {
+        form.reset();
+        status.textContent = "Thanks! Your question is on its way. I'll reply by email.";
+        status.classList.add('ok');
+      };
+      try {
+        let result: { ok: boolean; message?: string } | null = null;
+        try {
+          const response = await fetch(form.action, { method: 'POST', body });
+          result = await response.json();
+        } catch {
+          // Some browsers block reading the reply across origins; send without reading it.
+          await fetch(form.action, { method: 'POST', body, mode: 'no-cors' });
+        }
+        if (result && !result.ok) {
+          status.textContent = result.message || "That didn't go through. Please try again.";
+          status.classList.add('err');
+        } else {
+          done();
+        }
+      } catch {
+        status.textContent = "That didn't go through. Please try again, or email dan@lakehousetools.com.";
+        status.classList.add('err');
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>

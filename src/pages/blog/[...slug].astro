@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import AskForm from '../../components/AskForm.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -37,6 +38,7 @@ const ld = {
       <div class="prose">
         <Content />
       </div>
+      <AskForm source={`Blog: ${post.id}`} intro="Question about this post, or how it would apply to your Salesforce data? Ask, and I'll reply personally." />
       <aside class="post-footer">
         <p><strong>Try lht:</strong> <code>pip install lht</code>. Questions or ideas? Join the <a href="https://github.com/lakehousetools/lht/discussions">lht Discussions</a>.</p>
       </aside>

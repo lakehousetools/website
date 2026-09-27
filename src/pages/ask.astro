@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import AskForm from '../components/AskForm.astro';
+---
+<Base
+  title="Help me understand this | Lakehouse Tools"
+  description="Ask a question about Salesforce data in your warehouse, lht, or a pattern from the blog. I'll reply personally."
+>
+  <section class="section">
+    <div class="wrap narrow">
+      <AskForm
+        source="Ask page"
+        intro="Stuck on Salesforce data, reverse ETL, dedupe, or a pattern from the blog? Wondering whether lht fits your setup? Ask, and I'll reply personally."
+      />
+      <p class="muted ask-alt">Prefer to ask in public? Post in <a href="https://github.com/lakehousetools/lht/discussions/categories/q-a">lht Discussions</a>, where answers help the next person too.</p>
+    </div>
+  </section>
+</Base>

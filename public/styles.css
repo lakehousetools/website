@@ -173,3 +173,41 @@ h3 { font-size: 1.2rem; color: var(--heading); margin: 0; font-weight: 600; }
 .post-footer { margin-top: 48px; padding: 20px 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-alt); }
 .post-footer p { margin: 0; }
 .post-footer code { font-size: 0.9em; }
+
+/* Help me understand this form */
+.ask { border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: var(--bg); margin: 40px 0 0; }
+.section.alt .ask { margin-top: 0; }
+.ask h2 { margin: 0 0 8px; }
+.ask-intro { color: var(--text-muted); margin: 0 0 22px !important; }
+.ask-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 18px; }
+.ask-form label { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 500; color: var(--heading); }
+.ask-form label em { font-style: normal; font-weight: 400; color: var(--text-muted); }
+.ask-full { grid-column: 1 / -1; }
+.ask-form input[type=text], .ask-form input[type=email], .ask-form textarea {
+  font: 400 16px Inter, system-ui, sans-serif; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+.ask-form textarea { resize: vertical; min-height: 110px; }
+.ask-form input:focus, .ask-form textarea:focus { outline: 2px solid var(--shallows); outline-offset: 1px; border-color: var(--shallows); }
+.ask-check { flex-direction: row !important; align-items: center; font-weight: 400 !important; color: var(--text) !important; }
+.ask-check input { width: 18px; height: 18px; accent-color: var(--lake); }
+.ask-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.ask-actions .btn { border: 0; cursor: pointer; font-family: inherit; }
+.ask-actions .btn:disabled { opacity: 0.6; cursor: default; }
+.ask-note { margin: 0 !important; font-size: 13px; color: var(--text-muted); flex: 1 1 260px; }
+.ask-status { margin: 0 !important; font-size: 15px; min-height: 1em; }
+.ask-status.ok { color: var(--accent); font-weight: 500; }
+.ask-status.err { color: #A32D2D; }
+.ask-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.ask-alt { margin-top: 22px; font-size: 15px; }
+.nav .nav-ask { padding: 7px 14px; color: var(--sunset-ink); }
+.nav .nav-ask:hover { color: var(--sunset-ink); }
+@media (max-width: 720px) {
+  .ask { padding: 20px; }
+  .ask-form { grid-template-columns: 1fr; }
+  .nav .nav-github { display: none; }
+  .nav .nav-ask { font-size: 14px; padding: 7px 12px; }
+}
+@media (max-width: 380px) {
+  .logo { height: 24px; }
+}
