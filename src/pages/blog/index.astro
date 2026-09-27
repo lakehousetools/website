@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base
+  title="Blog | Lakehouse Tools"
+  description="Practical patterns for Salesforce data in your own warehouse: sync, reverse ETL, dedupe, visualization and AI, with lht."
+>
+  <section class="section blog-hero">
+    <div class="wrap narrow">
+      <h1 class="page-title">Blog</h1>
+      <p class="lede">Practical patterns for Salesforce data in the warehouse you already own.</p>
+    </div>
+  </section>
+  <section class="section blog-list-section">
+    <div class="wrap narrow">
+      <div class="post-list stacked">
+        {posts.map((post) => (
+          <a class="post-card" href={`/blog/${post.id}/`}>
+            <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+      <p class="muted feed-note">Follow along with the <a href="/rss.xml">RSS feed</a>.</p>
+    </div>
+  </section>
+</Base>

@@ -9,6 +9,10 @@
 - [lht llms.txt](https://lakehousetools.github.io/lht/llms.txt): detailed machine-readable docs index
 - [PyPI](https://pypi.org/project/lht/)
 
+## Blog
+
+- [Lakehouse Tools blog](https://lakehousetools.com/blog/): patterns for Salesforce data in Snowflake with lht ([RSS](https://lakehousetools.com/rss.xml))
+
 ## Community
 
 - [Discussions](https://github.com/lakehousetools/lht/discussions): questions, ideas, success stories
