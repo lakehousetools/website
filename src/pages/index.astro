@@ -1,23 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lakehouse Tools | Your warehouse is your data platform</title>
-  <meta name="description" content="lht is an open-source Python library and CLI that syncs Salesforce into Snowflake, pushes data back with reverse ETL, and merges duplicate records, on your own infrastructure. Bring Your Own Data Warehouse.">
-  <link rel="canonical" href="https://lakehousetools.com/">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Lakehouse Tools">
-  <meta property="og:title" content="Your warehouse is your data platform.">
-  <meta property="og:description" content="Salesforce is a view into it. lht keeps them in sync, in both directions: open-source sync, reverse ETL and record merge. Bring Your Own Data Warehouse.">
-  <meta property="og:url" content="https://lakehousetools.com/">
-  <meta name="twitter:card" content="summary">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script type="application/ld+json">
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = posts.slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base
+  title="Lakehouse Tools | Your warehouse is your data platform"
+  description="lht is an open-source Python library and CLI that syncs Salesforce into Snowflake, pushes data back with reverse ETL, and merges duplicate records, on your own infrastructure. Bring Your Own Data Warehouse."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -34,28 +29,8 @@
     "publisher": { "@type": "Organization", "name": "Lakehouse Tools", "url": "https://lakehousetools.com/" }
   }
   </script>
-</head>
-<body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="/" aria-label="Lakehouse Tools home">
-        <svg class="logo" viewBox="0 0 270 52" role="img" aria-hidden="true">
-          <path class="roof" d="M6 24 L24 8 L42 24" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-          <path class="wave" d="M4 34 Q 11 29 18 34 T 32 34 T 46 34" fill="none" stroke-width="3" stroke-linecap="round"/>
-          <path class="wave" d="M4 43 Q 11 38 18 43 T 32 43 T 46 43" fill="none" stroke-width="3" stroke-linecap="round"/>
-          <text x="58" y="34"><tspan class="name">Lakehouse</tspan><tspan class="name2" dx="8">Tools</tspan></text>
-        </svg>
-      </a>
-      <nav class="nav" aria-label="Main">
-        <a href="#what">What lht does</a>
-        <a href="https://lakehousetools.github.io/lht/">Docs</a>
-        <a href="https://github.com/lakehousetools/lht/discussions">Community</a>
-        <a class="btn btn-ghost" href="https://github.com/lakehousetools/lht">GitHub</a>
-      </nav>
-    </div>
-  </header>
+  </Fragment>
 
-  <main>
     <section class="hero">
       <div class="wrap">
         <p class="eyebrow">lht · open source · Apache 2.0</p>
@@ -146,6 +121,24 @@ lht sync --sobject Account --table ACCOUNT --schema RAW</code></pre>
       </div>
     </section>
 
+    <section class="section" id="blog">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>From the blog</h2>
+          <a href="/blog/">All posts →</a>
+        </div>
+        <div class="post-list">
+          {latest.map((post) => (
+            <a class="post-card" href={`/blog/${post.id}/`}>
+              <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section class="section join" id="join">
       <div class="wrap narrow center">
         <h2>Try lht</h2>
@@ -158,22 +151,8 @@ lht sync --sobject Account --table ACCOUNT --schema RAW</code></pre>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-row">
-      <p>© <span id="year">2026</span> Lakehouse Tools. lht is open source under the Apache 2.0 license.</p>
-      <nav aria-label="Footer">
-        <a href="https://lakehousetools.github.io/lht/">Docs</a>
-        <a href="https://github.com/lakehousetools/lht">GitHub</a>
-        <a href="https://pypi.org/project/lht/">PyPI</a>
-        <a href="https://github.com/lakehousetools/lht/blob/main/SECURITY.md">Security</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script is:inline>
     document.querySelectorAll('button.copy').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var text = btn.getAttribute('data-copy');
@@ -182,5 +161,4 @@ lht sync --sobject Account --table ACCOUNT --schema RAW</code></pre>
       });
     });
   </script>
-</body>
-</html>
+</Base>
