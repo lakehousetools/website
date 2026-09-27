@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import AskForm from '../../components/AskForm.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -28,6 +29,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month:
         ))}
       </div>
       <p class="muted feed-note">Follow along with the <a href="/rss.xml">RSS feed</a>.</p>
+      <AskForm source="Blog list" />
     </div>
   </section>
 </Base>
